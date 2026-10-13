@@ -1,0 +1,7 @@
+node_modules/
+.tmp/
+.env
+credentials.json
+token.json
+.vercel/
+.DS_Store

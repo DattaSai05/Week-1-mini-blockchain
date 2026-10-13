@@ -1,0 +1,14 @@
+{
+  "name": "mini-blockchain",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A from-scratch blockchain with a browser UI (static, deployed on Vercel) and an optional websocket gossip demo.",
+  "scripts": {
+    "test": "node --test tools/test_chain.js",
+    "serve": "npx serve public",
+    "demo:fork": "node tools/fork_demo.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "ws": "^8.18.0" }
+}

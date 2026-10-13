@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Blockchain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mini Blockchain</h1>
+    <div id="status" class="status ok">Chain valid</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>1. Wallets</h2>
+      <p class="hint">Each wallet is an ECDSA P-256 key pair generated in your browser. The address is the public key.</p>
+      <button id="new-wallet">New wallet</button>
+      <ul id="wallets"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>2. Send a transaction</h2>
+      <form id="tx-form">
+        <label>From <select id="tx-from"></select></label>
+        <label>To <select id="tx-to"></select></label>
+        <label>Amount <input id="tx-amount" type="number" min="1" step="1" value="10"></label>
+        <div class="row">
+          <button type="submit">Sign &amp; submit</button>
+          <button type="button" id="tx-forge" class="secondary">Submit forged (bad signature)</button>
+        </div>
+      </form>
+      <div id="tx-msg" class="msg"></div>
+      <h3>Mempool (<span id="mempool-count">0</span>)</h3>
+      <ul id="mempool" class="mono small"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>3. Mine</h2>
+      <form id="mine-form">
+        <label>Reward to <select id="miner"></select></label>
+        <label>Difficulty (leading hex zeros)
+          <input id="difficulty" type="number" min="1" max="6" value="3">
+        </label>
+        <div class="row">
+          <button type="submit" id="mine-btn">Mine block</button>
+          <button type="button" id="reset" class="secondary">Reset chain</button>
+        </div>
+      </form>
+      <div id="mine-msg" class="msg"></div>
+      <p class="hint">Each +1 difficulty is about 16&times; more work. Reward: 50 coins per block.</p>
+    </section>
+
+    <section class="panel wide">
+      <h2>4. Chain</h2>
+      <p class="hint">Edit any transaction amount in a past block, then watch that block and every block after it turn invalid. "Re-mine from here" repairs the chain.</p>
+      <div id="chain"></div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
